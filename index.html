@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Introduction to Machine Learning | Entri Coding Tamil</title>
+<style>
+:root{--sky:#0ea5e9;--sky-d:#0369a1;--sky-l:#e0f2fe;--sky-p:#f0f9fe;--line:#bae6fd;--text:#0f2a3d}
+*{box-sizing:border-box}
+body{margin:0;padding-bottom:64px;font:16px/1.6 -apple-system,"Segoe UI",Calibri,Roboto,Arial,sans-serif;color:var(--text);background:#fff}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+header.banner{background:var(--sky);color:#fff;padding:44px 0 40px}
+.banner .brand{letter-spacing:.2em;font-size:13px;font-weight:700;color:var(--sky-l)}
+.banner h1{margin:8px 0 6px;font-size:clamp(30px,6vw,46px);line-height:1.1}
+.banner p{margin:0;font-size:18px}
+h2{display:flex;align-items:center;gap:12px;color:var(--sky-d);font-size:25px;margin:0 0 12px;padding-bottom:8px;border-bottom:2px solid var(--sky)}
+.num{flex:none;display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--sky);color:#fff;font-size:17px}
+h3{margin:20px 0 6px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sky-d)}
+.intro,.step,.cheat,.practice,.mistakes{margin:36px 0}
+.part{display:inline-block;margin-top:28px;background:var(--sky-d);color:#fff;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:999px}
+.concept,.callout{background:var(--sky-l);border-left:5px solid var(--sky);padding:10px 14px;margin:0;border-radius:0 6px 6px 0}
+ul{margin:0;padding-left:22px} li{margin:4px 0}
+code{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.9em;background:var(--sky-l);color:var(--sky-d);padding:1px 5px;border-radius:4px}
+.code,.out{position:relative;border:1px solid var(--line);border-left:5px solid var(--sky);border-radius:6px;overflow:hidden}
+.code{background:var(--sky-p)} .out{background:#fff;border-color:var(--sky-d);border-left-color:var(--sky-d)}
+pre{margin:0;padding:12px 14px;overflow-x:auto;font:14px/1.5 Consolas,"SF Mono",Menlo,monospace;color:#1e293b}
+.copy{position:absolute;top:8px;right:8px;border:0;background:var(--sky);color:#fff;font-size:12px;padding:3px 10px;border-radius:4px;cursor:pointer}
+.copy:hover{background:var(--sky-d)}
+table{width:100%;border-collapse:collapse;margin-top:12px;font-size:14px}
+th{background:var(--sky);color:#fff;text-align:left}
+th,td{padding:8px 12px;border:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--sky-p)}
+.tablewrap{overflow-x:auto;margin-top:14px}
+.visual{margin-top:18px}
+/* compare */
+.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.cbox{border:1px solid var(--line);border-radius:8px;padding:14px;background:#fff}
+.cbox.hl{background:var(--sky-p);border-color:var(--sky)}
+.ctitle{font-weight:700;color:var(--sky-d);margin-bottom:8px}
+.eq{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:6px}
+.eq span{background:var(--sky-l);padding:4px 10px;border-radius:6px;font-weight:600}
+.eq span.res{background:var(--sky);color:#fff}
+.eq b{color:var(--sky-d)}
+.cbox p{margin:6px 0 0;font-size:14px}
+/* nested */
+.nest{border:2px solid var(--sky);border-radius:16px;padding:14px}
+.n1{background:var(--sky-p)} .n2{background:var(--sky-l);margin-top:10px} .n3{background:#fff;margin-top:10px}
+.nl{font-weight:700;color:var(--sky-d)} .nl small{display:block;font-weight:400;color:var(--text);font-size:13px}
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.fs{position:relative;border:1px solid var(--line);border-top:4px solid var(--sky);border-radius:8px;padding:12px;background:#fff}
+.fn{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--sky);color:#fff;font-weight:700;font-size:14px}
+.ft{font-weight:700;color:var(--sky-d);margin:6px 0 4px}
+.fd{font-size:14px}
+.ftool{margin-top:8px;font-size:12px;background:var(--sky-l);color:var(--sky-d);display:inline-block;padding:2px 8px;border-radius:999px}
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.card{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}
+.ch{background:var(--sky);color:#fff;font-weight:700;padding:8px 14px}
+.card p{margin:8px 14px;font-size:14px} .card .an{background:var(--sky-p);margin:10px 0 0;padding:8px 14px;font-style:italic;color:var(--sky-d)}
+/* tree */
+.tree{text-align:center}
+.q{display:inline-block;background:var(--sky-d);color:#fff;padding:8px 14px;border-radius:8px;font-weight:600;font-size:14px}
+.branches{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px;align-items:start}
+.tree>.branches{grid-template-columns:2fr 1fr}
+.tree .q{display:table;margin:0 auto}
+.tree .tag{display:table;margin:0 auto 8px}
+.tree .branch .q{margin-bottom:0}
+@media(max-width:640px){.tree .branches,.tree>.branches{grid-template-columns:1fr}}
+.branch{border-top:3px solid var(--sky);padding-top:8px}
+.tag{display:inline-block;background:var(--sky-l);color:var(--sky-d);font-weight:700;font-size:13px;padding:2px 10px;border-radius:999px;margin-bottom:8px}
+.resb{background:var(--sky);color:#fff;border-radius:8px;padding:10px;font-weight:700}
+.resb small{display:block;font-weight:400;margin-top:4px;color:#f0f9ff}
+.treenote{font-size:13px;color:#475569;margin:14px 0 0}
+footer{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:3px solid var(--sky);text-align:center;padding:10px;font-weight:700;color:var(--sky-d)}
+@media print{.copy{display:none}.step{break-inside:avoid}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style></head><body>
+<header class="banner"><div class="wrap"><div class="brand">ENTRI CODING TAMIL</div><h1>Introduction to Machine Learning</h1><p>A beginner guide to concepts, workflow, types and choosing algorithms</p></div></header>
+<main class="wrap">
+<section class="intro"><h2>Why Learn Machine Learning?</h2>
+<p>Machine Learning is the reason a food app can predict your delivery time, a UPI app can flag a suspicious payment in seconds, and a video platform seems to know what you want to watch next. Instead of writing thousands of rules by hand, we show a computer many examples and let it discover the patterns, and that one idea now powers fraud detection in banks, demand forecasting in retail, disease screening in healthcare, route planning in logistics and personalised recommendations almost everywhere. Companies collect more data every day, but data alone has no value until someone turns it into predictions and decisions, which is why ML skills are among the most in-demand in the job market and why Data Analysts, Data Scientists and even Software Developers are now expected to understand them. A beginner who understands what ML is, how a project flows from problem to deployment, and how to choose a suitable algorithm already has a strong base for interviews, portfolio projects and further learning in AI. This guide gives you exactly that foundation with simple concepts, small programs and real outputs.</p>
+<p class="callout">Machine Learning is the skill of teaching computers to learn patterns from data and make predictions, without writing every rule by hand.</p>
+<h3>How to use this guide</h3>
+<ul><li>Each step has a Concept and an Explanation. Steps with code also have an Example Program and its Sample Output.</li>
+<li>You need basic Python and Pandas. Finish the Pandas Starter Guide first if you have not.</li>
+<li>Install the library once with <code>pip install scikit-learn</code>, then type each program yourself.</li>
+<li>Small differences in output across scikit-learn versions are normal.</li></ul></section>
+<div class="part">Foundations</div><section class="step" id="step1"><h2><span class="num">1</span>What is Machine Learning?</h2><h3>Concept</h3><p class="concept">Machine Learning (ML) is a way of building programs that learn rules from examples (data), instead of a programmer writing every rule by hand.</p><h3>Explanation</h3><ul><li>In normal programming you give the computer data and rules, and it gives answers.</li><li>In ML you give the computer data and the correct answers, and it works out the rules. These learned rules are called a model.</li><li>The more good-quality examples you give, the better the model usually becomes.</li></ul><div class="visual"><div class="compare">
+<div class="cbox"><div class="ctitle">Traditional Programming</div>
+<div class="eq"><span>Data</span><b>+</b><span>Rules</span><b>&rarr;</b><span class="res">Answers</span></div>
+<p>A programmer writes the rules, such as "if marks &gt;= 50 then Pass".</p></div>
+<div class="cbox hl"><div class="ctitle">Machine Learning</div>
+<div class="eq"><span>Data</span><b>+</b><span>Answers</span><b>&rarr;</b><span class="res">Rules (Model)</span></div>
+<p>The computer studies examples and finds the rules by itself.</p></div></div></div><h3>Example Program</h3><div class="code"><button class="copy" type="button">Copy</button><pre>from sklearn.tree import DecisionTreeClassifier
+
+# Each row is a student: [study hours, attendance %]
+# Label: 1 = Pass, 0 = Fail
+X = [[1, 50], [2, 60], [3, 55], [5, 80], [6, 85], [7, 90]]
+y = [0, 0, 0, 1, 1, 1]
+
+model = DecisionTreeClassifier()
+model.fit(X, y)                      # the model learns the rule
+
+# Predict for two new students
+print(model.predict([[6, 88], [2, 45]]))</pre></div><h3>Sample Output</h3><div class="out"><pre>[1 0]</pre></div></section><section class="step" id="step2"><h2><span class="num">2</span>AI vs Machine Learning vs Deep Learning</h2><h3>Concept</h3><p class="concept">These three terms are related but not the same. AI is the big idea, ML is one way to achieve it, and Deep Learning is a special kind of ML.</p><h3>Explanation</h3><ul><li>AI: any machine that behaves smartly. Example: a chess bot or a voice assistant.</li><li>ML: AI that learns from data. Example: a spam filter or a delivery time predictor.</li><li>Deep Learning: ML that uses neural networks with many layers. Example: face recognition and chatbots.</li><li>Start with classical ML (this guide) before moving to Deep Learning.</li></ul><div class="visual"><div class="nest n1"><div class="nl">Artificial Intelligence (AI)<small>Machines that act smart</small></div>
+<div class="nest n2"><div class="nl">Machine Learning (ML)<small>Learns patterns from data</small></div>
+<div class="nest n3"><div class="nl">Deep Learning (DL)<small>Neural networks with many layers</small></div></div></div></div></div><h3>Real-Life Examples</h3><ul><li>Swiggy estimating your delivery time from past orders (ML)</li><li>Your UPI app flagging a suspicious payment (ML)</li><li>YouTube suggesting your next video (ML)</li><li>Gmail moving spam to the spam folder (ML)</li></ul></section><section class="step" id="step3"><h2><span class="num">3</span>The Machine Learning Workflow</h2><h3>Concept</h3><p class="concept">Every ML project, big or small, follows the same sequence of steps. Knowing this roadmap keeps you from getting lost.</p><h3>Explanation</h3><ul><li>Data preparation usually takes the most time. A model is only as good as its data.</li><li>The workflow is a loop. If the evaluation score is low, go back to the data or the model and improve.</li><li>Step 12 of this guide shows the whole workflow in one small program.</li></ul><div class="visual"><div class="flow"><div class="fs"><div class="fn">1</div><div class="ft">Define the problem</div><div class="fd">Decide what you want to predict and how you will measure success.</div><div class="ftool">A clear business question</div></div><div class="fs"><div class="fn">2</div><div class="ft">Collect data</div><div class="fd">Gather data from files, databases or APIs.</div><div class="ftool">Pandas: read_csv()</div></div><div class="fs"><div class="fn">3</div><div class="ft">Clean and explore</div><div class="fd">Fix missing values and duplicates, then study the data with charts.</div><div class="ftool">Pandas, Matplotlib, Seaborn</div></div><div class="fs"><div class="fn">4</div><div class="ft">Prepare and split</div><div class="fd">Choose the input columns, convert text to numbers, split into training and test sets.</div><div class="ftool">Pandas, scikit-learn</div></div><div class="fs"><div class="fn">5</div><div class="ft">Train a model</div><div class="fd">Choose an algorithm and let it learn from the training data.</div><div class="ftool">scikit-learn: fit()</div></div><div class="fs"><div class="fn">6</div><div class="ft">Evaluate</div><div class="fd">Test the model on unseen data and check the score. Go back and improve if the score is low.</div><div class="ftool">sklearn.metrics</div></div><div class="fs"><div class="fn">7</div><div class="ft">Deploy and monitor</div><div class="fd">Put the model in an app or API, then keep checking that it still works well.</div><div class="ftool">Streamlit, Flask</div></div></div></div></section><section class="step" id="step4"><h2><span class="num">4</span>Key Terms Every Beginner Must Know</h2><h3>Concept</h3><p class="concept">ML has its own vocabulary. Learn these six terms and every tutorial becomes easier to follow.</p><h3>Explanation</h3><ul><li>Think of training data as practice questions and test data as the final exam. A fair exam must contain questions the student has not seen.</li><li><code>train_test_split()</code> divides your data into the two parts. <code>test_size=0.2</code> keeps 20% for testing.</li><li><code>random_state</code> makes the split the same every time you run the code.</li></ul><div class="visual"><div class="tablewrap"><table><thead><tr><th>Term</th><th>Meaning</th><th>Example</th></tr></thead><tbody>
+<tr><td><b>Feature</b> (X)</td><td>An input column the model uses to learn</td><td>Study hours, attendance</td></tr>
+<tr><td><b>Label</b> or <b>Target</b> (y)</td><td>The output column we want to predict</td><td>Marks, Pass or Fail</td></tr>
+<tr><td><b>Training data</b></td><td>The part of the data the model learns from</td><td>Practice questions</td></tr>
+<tr><td><b>Test data</b></td><td>Unseen data kept aside to check the model</td><td>The final exam</td></tr>
+<tr><td><b>Model</b></td><td>The rules the algorithm learned from the data</td><td>"More hours means more marks"</td></tr>
+<tr><td><b>Prediction</b></td><td>The answer the model gives for new data</td><td>Marks for a new student</td></tr>
+</tbody></table></div></div><h3>Example Program</h3><div class="code"><button class="copy" type="button">Copy</button><pre>import pandas as pd
+from sklearn.model_selection import train_test_split
+
+df = pd.DataFrame({
+    &quot;Hours&quot;: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    &quot;Marks&quot;: [35, 40, 48, 52, 60, 66, 72, 80, 85, 92]
+})
+
+X = df[[&quot;Hours&quot;]]     # feature (input)
+y = df[&quot;Marks&quot;]       # label (output to predict)
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42)
+
+print(&quot;Training rows:&quot;, len(X_train))
+print(&quot;Testing rows:&quot;, len(X_test))</pre></div><h3>Sample Output</h3><div class="out"><pre>Training rows: 8
+Testing rows: 2</pre></div></section><div class="part">Types and Algorithms</div><section class="step" id="step5"><h2><span class="num">5</span>Types of Machine Learning</h2><h3>Concept</h3><p class="concept">ML is divided into three types, based on what kind of data you have and how the model learns.</p><h3>Explanation</h3><ul><li>The key question is: does my data contain the correct answers (labels)?</li><li>Supervised and Unsupervised Learning cover most beginner and job-level projects.</li><li>Reinforcement Learning is used for games and robots, and is best learned later.</li></ul><div class="visual"><div class="cards">
+<div class="card"><div class="ch">1. Supervised Learning</div><p><b>Data:</b> has labels (answers)</p><p><b>Goal:</b> predict the answer for new data</p><p><b>Examples:</b> house price, spam email, loan default</p><p class="an">Like practising with an answer key.</p></div>
+<div class="card"><div class="ch">2. Unsupervised Learning</div><p><b>Data:</b> no labels</p><p><b>Goal:</b> find hidden groups or patterns</p><p><b>Examples:</b> customer segments, similar products</p><p class="an">Like sorting a mixed bag of items without instructions.</p></div>
+<div class="card"><div class="ch">3. Reinforcement Learning</div><p><b>Data:</b> learns from actions and rewards</p><p><b>Goal:</b> pick actions that earn the most reward</p><p><b>Examples:</b> game bots, robots, self-driving</p><p class="an">Like learning cricket batting by trial and score feedback.</p></div>
+</div></div></section><section class="step" id="step6"><h2><span class="num">6</span>Supervised Learning: Regression</h2><h3>Concept</h3><p class="concept">Regression is supervised learning that predicts a number, such as a price, a time or a score.</p><h3>Explanation</h3><ul><li>Use it when the answer is a continuous number: house price, delivery time, marks, sales.</li><li><code>LinearRegression</code> finds the best straight line through your data.</li><li><code>fit()</code> teaches the model, and <code>predict()</code> gives answers for new data.</li><li>The input to <code>predict()</code> must be a 2D list, so we write [[9]] and not [9].</li></ul><h3>Example Program</h3><div class="code"><button class="copy" type="button">Copy</button><pre>from sklearn.linear_model import LinearRegression
+
+hours = [[1], [2], [3], [4], [5], [6], [7], [8]]
+marks = [35, 42, 50, 55, 63, 70, 78, 85]
+
+model = LinearRegression()
+model.fit(hours, marks)
+
+predicted = model.predict([[9]])
+print(&quot;Predicted marks for 9 hours:&quot;, round(predicted[0], 1))</pre></div><h3>Sample Output</h3><div class="out"><pre>Predicted marks for 9 hours: 91.8</pre></div></section><section class="step" id="step7"><h2><span class="num">7</span>Supervised Learning: Classification</h2><h3>Concept</h3><p class="concept">Classification is supervised learning that predicts a category, such as Pass or Fail, Spam or Not Spam.</p><h3>Explanation</h3><ul><li>Use it when the answer is one of a fixed set of classes.</li><li><code>LogisticRegression</code> has &quot;regression&quot; in its name, but it is a classification algorithm.</li><li><code>predict()</code> gives the class. <code>predict_proba()</code> gives the probability of each class.</li></ul><h3>Example Program</h3><div class="code"><button class="copy" type="button">Copy</button><pre>from sklearn.linear_model import LogisticRegression
+
+hours  = [[1], [2], [3], [4], [5], [6], [7], [8]]
+result = [0, 0, 0, 0, 1, 1, 1, 1]      # 0 = Fail, 1 = Pass
+
+model = LogisticRegression()
+model.fit(hours, result)
+
+print(&quot;Result for 2 hours:&quot;, model.predict([[2]])[0])
+print(&quot;Result for 7 hours:&quot;, model.predict([[7]])[0])
+
+chance = model.predict_proba([[7]])[0][1]
+print(&quot;Chance of passing with 7 hours:&quot;, round(chance, 2))</pre></div><h3>Sample Output</h3><div class="out"><pre>Result for 2 hours: 0
+Result for 7 hours: 1
+Chance of passing with 7 hours: 0.95</pre></div></section><section class="step" id="step8"><h2><span class="num">8</span>Unsupervised Learning: Clustering</h2><h3>Concept</h3><p class="concept">Clustering is unsupervised learning that groups similar items together when you have no labels.</p><h3>Explanation</h3><ul><li>You do not tell the model the answers. It finds the groups on its own.</li><li><code>KMeans</code> needs you to decide the number of groups with <code>n_clusters</code>.</li><li><code>fit_predict()</code> returns the group number for every row. The numbers 0 and 1 are just names of the groups.</li><li>Used for customer segmentation, grouping similar products and finding patterns in data.</li></ul><h3>Example Program</h3><div class="code"><button class="copy" type="button">Copy</button><pre>from sklearn.cluster import KMeans
+
+# Each row is a customer: [annual income (thousands), spending score]
+customers = [[15, 20], [16, 25], [18, 22], [17, 18],
+             [80, 85], [85, 90], [78, 80], [82, 88]]
+
+model = KMeans(n_clusters=2, random_state=42, n_init=10)
+groups = model.fit_predict(customers)
+
+print(groups)</pre></div><h3>Sample Output</h3><div class="out"><pre>[0 0 0 0 1 1 1 1]</pre></div></section><section class="step" id="step9"><h2><span class="num">9</span>When to Choose Which Algorithm</h2><h3>Concept</h3><p class="concept">Choosing an algorithm is a decision based on your data and your goal. Answer two questions: do I have labels, and what do I want to predict?</p><h3>Explanation</h3><ul><li>Follow the chart below to find the right family of algorithms, then pick from the table.</li><li>Always start with a simple model as a baseline. Then try a stronger one and compare the scores.</li><li>Good data and good features usually matter more than a fancy algorithm.</li><li>If you must explain the decision to a manager, prefer Linear Regression, Logistic Regression or Decision Tree.</li></ul><div class="visual"><div class="tree">
+<div class="q">Does your data have a label (the answer column)?</div>
+<div class="branches">
+ <div class="branch"><div class="tag">Yes: Supervised</div><div class="q">What do you want to predict?</div>
+  <div class="branches">
+   <div class="branch"><div class="tag">A number</div><div class="resb">Regression<small>Linear Regression, Random Forest</small></div></div>
+   <div class="branch"><div class="tag">A category</div><div class="resb">Classification<small>Logistic Regression, Decision Tree, Random Forest, KNN</small></div></div>
+  </div></div>
+ <div class="branch"><div class="tag">No: Unsupervised</div><div class="resb">Clustering<small>K-Means</small></div></div>
+</div>
+<p class="treenote">Learning by trial, reward and penalty? That is Reinforcement Learning, which is an advanced topic for later.</p></div><div class="tablewrap"><table><thead><tr><th>Algorithm</th><th>Type</th><th>Choose it when</th><th>Example</th></tr></thead><tbody>
+<tr><td><b>Linear Regression</b></td><td>Regression</td><td>The relationship looks like a straight line and you want a simple, explainable model</td><td>Marks from study hours</td></tr>
+<tr><td><b>Logistic Regression</b></td><td>Classification</td><td>You have two classes and want a quick baseline with probabilities</td><td>Pass or fail, spam or not</td></tr>
+<tr><td><b>Decision Tree</b></td><td>Both</td><td>You must explain the decision as easy if-else rules</td><td>Why a loan was approved</td></tr>
+<tr><td><b>Random Forest</b></td><td>Both</td><td>You want strong accuracy with very little tuning</td><td>Customer churn</td></tr>
+<tr><td><b>KNN</b></td><td>Both</td><td>Data is small and similar items should get similar answers</td><td>Recommend a similar item</td></tr>
+<tr><td><b>K-Means</b></td><td>Clustering</td><td>You have no labels and want to find groups</td><td>Customer segments</td></tr>
+</tbody></table></div></div></section><div class="part">Evaluation and Practice</div><section class="step" id="step10"><h2><span class="num">10</span>Evaluating Your Model</h2><h3>Concept</h3><p class="concept">After training, you must check how good the model is on data it has never seen. A score tells you if the model is ready to use.</p><h3>Explanation</h3><ul><li>Regression: MAE is the average size of the error (lower is better). R2 score shows how well the model explains the data (closer to 1 is better).</li><li>Classification: accuracy is the number of correct predictions divided by the total predictions.</li><li>Never judge a model on the training data. Always use the test data.</li><li>Accuracy can mislead when one class is very rare, such as fraud. Later you will learn precision and recall for such cases.</li></ul><h3>Example Program</h3><div class="code"><button class="copy" type="button">Copy</button><pre>from sklearn.metrics import mean_absolute_error, r2_score, accuracy_score
+
+# Regression: real marks vs predicted marks
+real      = [50, 60, 70, 80]
+predicted = [52, 58, 73, 79]
+print(&quot;MAE:&quot;, mean_absolute_error(real, predicted))
+print(&quot;R2 score:&quot;, round(r2_score(real, predicted), 2))
+
+# Classification: actual vs predicted class
+actual = [1, 0, 1, 1, 0, 1, 0, 0]
+guess  = [1, 0, 1, 0, 0, 1, 1, 0]
+print(&quot;Accuracy:&quot;, accuracy_score(actual, guess))</pre></div><h3>Sample Output</h3><div class="out"><pre>MAE: 2.0
+R2 score: 0.96
+Accuracy: 0.75</pre></div></section><section class="step" id="step11"><h2><span class="num">11</span>Overfitting and Underfitting</h2><h3>Concept</h3><p class="concept">Overfitting means the model memorizes the training data and fails on new data. Underfitting means the model is too simple to learn the pattern.</p><h3>Explanation</h3><ul><li>Think of a student who memorizes answers: full marks in practice, poor marks in the exam. That is overfitting.</li><li>The warning sign is a high training score but a much lower test score.</li><li>To reduce overfitting: use more data, use a simpler model, or limit the model with settings like <code>max_depth</code>.</li><li>Below, the unlimited tree memorizes the training data. The limited tree generalizes better.</li></ul><h3>Example Program</h3><div class="code"><button class="copy" type="button">Copy</button><pre>from sklearn.datasets import make_moons
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+
+X, y = make_moons(n_samples=200, noise=0.35, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42)
+
+for depth in [None, 3]:
+    model = DecisionTreeClassifier(max_depth=depth, random_state=42)
+    model.fit(X_train, y_train)
+    print(&quot;max_depth =&quot;, depth,
+          &quot;| Train:&quot;, round(model.score(X_train, y_train), 2),
+          &quot;| Test:&quot;, round(model.score(X_test, y_test), 2))</pre></div><h3>Sample Output</h3><div class="out"><pre>max_depth = None | Train: 1.0 | Test: 0.83
+max_depth = 3 | Train: 0.88 | Test: 0.85</pre></div></section><section class="step" id="step12"><h2><span class="num">12</span>Your First Complete ML Project</h2><h3>Concept</h3><p class="concept">Let us put the whole workflow together: load data, split it, train a model, test it and predict for a new example.</p><h3>Explanation</h3><ul><li>The comments mark each stage of the workflow from Step 3.</li><li>The Iris dataset comes built into scikit-learn. The task is to predict a flower&#x27;s species from its petal and sepal size.</li><li><code>RandomForestClassifier</code> is a strong, beginner-friendly algorithm that works well with little tuning.</li></ul><h3>Example Program</h3><div class="code"><button class="copy" type="button">Copy</button><pre>import pandas as pd
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+
+# 1-3. Problem and data: predict the flower species
+iris = load_iris(as_frame=True)
+X = iris.data
+y = iris.target
+print(&quot;Data shape:&quot;, X.shape)
+print(&quot;Species:&quot;, &quot;, &quot;.join(iris.target_names))
+
+# 4. Prepare: split into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42)
+
+# 5. Train the model
+model = RandomForestClassifier(random_state=42)
+model.fit(X_train, y_train)
+
+# 6. Evaluate on unseen data
+accuracy = accuracy_score(y_test, model.predict(X_test))
+print(&quot;Accuracy:&quot;, round(accuracy, 2))
+
+# 7. Use the model on a new flower
+new_flower = pd.DataFrame([[5.1, 3.5, 1.4, 0.2]], columns=X.columns)
+print(&quot;Predicted species:&quot;, iris.target_names[model.predict(new_flower)[0]])</pre></div><h3>Sample Output</h3><div class="out"><pre>Data shape: (150, 4)
+Species: setosa, versicolor, virginica
+Accuracy: 1.0
+Predicted species: setosa</pre></div></section>
+<section class="mistakes"><h2>Common Beginner Mistakes</h2><ul><li>Testing the model on the same data it was trained on. Always keep a separate test set.</li><li>Skipping data cleaning. Missing values and wrong data types spoil the results.</li><li>Jumping to a complex algorithm before trying a simple baseline.</li><li>Judging by accuracy alone when one class is very rare.</li><li>Letting information from the test data leak into training, which makes scores look better than they really are.</li><li>Training once and never checking again. Real-world data changes, so models must be monitored.</li></ul></section>
+<section class="cheat"><h2>Quick Cheat Sheet (scikit-learn)</h2><div class="tablewrap"><table><thead><tr><th>Task</th><th>Code</th></tr></thead><tbody><tr><td>Split data</td><td><code>train_test_split(X, y, test_size=0.2, random_state=42)</code></td></tr><tr><td>Train a model</td><td><code>model.fit(X_train, y_train)</code></td></tr><tr><td>Predict</td><td><code>model.predict(X_test)</code></td></tr><tr><td>Regression model</td><td><code>LinearRegression()</code></td></tr><tr><td>Classification model</td><td><code>LogisticRegression()  or  DecisionTreeClassifier()</code></td></tr><tr><td>Stronger all-rounder</td><td><code>RandomForestClassifier(random_state=42)</code></td></tr><tr><td>Clustering model</td><td><code>KMeans(n_clusters=3, n_init=10)</code></td></tr><tr><td>Regression score</td><td><code>mean_absolute_error(y_test, pred)  or  r2_score(y_test, pred)</code></td></tr><tr><td>Classification score</td><td><code>accuracy_score(y_test, pred)</code></td></tr><tr><td>Quick score</td><td><code>model.score(X_test, y_test)</code></td></tr></tbody></table></div></section>
+<section class="practice"><h2>Try It Yourself</h2><p class="callout">Run each program, then change the numbers and watch how the output changes.</p>
+<ul><li>In Step 6, add 3 more rows of hours and marks, then predict marks for 10 hours.</li><li>In Step 12, replace RandomForestClassifier with DecisionTreeClassifier and compare the accuracy.</li><li>Think of one problem around you and decide: is it regression, classification or clustering, and which algorithm would you try first?</li></ul>
+<h3>What to learn next</h3><ul><li>Data cleaning and encoding text columns</li><li>Cross-validation and more metrics such as precision and recall</li><li>More algorithms and model tuning</li><li>Deploying a model with Streamlit</li></ul></section>
+</main>
+<footer>Entri Coding Tamil</footer>
+<script>
+document.querySelectorAll(".copy").forEach(function(b){b.addEventListener("click",function(){
+var t=b.parentElement.querySelector("pre").innerText;
+try{navigator.clipboard.writeText(t).then(function(){b.textContent="Copied!";setTimeout(function(){b.textContent="Copy"},1500)})}catch(e){}
+})});
+</script>
+</body></html>
